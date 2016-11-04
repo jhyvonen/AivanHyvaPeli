@@ -1,0 +1,8 @@
+﻿<Window x:Class = "XAMLVsCode.MainWindow"
+   xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" Title = "MainWindow" Height = "900" Width = "1600">
+
+    <StackPanel>
+    </StackPanel>
+
+</Window> 
