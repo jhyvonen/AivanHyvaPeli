@@ -44,8 +44,12 @@ namespace XAMLVsCode
             stackPanel.Children.Add(mainMenuButtonMaker("EXIT"));
             
             ImageBrush brush = new ImageBrush(new BitmapImage(new Uri(
-             "D:/Projects/AivanHyvaPeli/tausta.png")));
+             AppDomain.CurrentDomain.BaseDirectory + "/tausta.jpg")));
             stackPanel.Background = brush;
+
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "/musiikki.wav";
+            player.PlayLooping();
         }
 
         public Button mainMenuButtonMaker(string buttonName)
