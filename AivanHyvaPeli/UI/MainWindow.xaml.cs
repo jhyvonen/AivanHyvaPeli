@@ -14,10 +14,10 @@ namespace AivanHyvaPeli
             InitializeComponent();
             // Create the StackPanel 
             StackPanel stackPanel = new StackPanel();
-            stackPanel.Height = 900;
-            stackPanel.Width = 1600;
+            stackPanel.Height = 768;
+            stackPanel.Width = 1366;
             Content = stackPanel;
-            
+
 
             // Create the TextBlock 
             TextBlock textBlock = new TextBlock();
@@ -31,13 +31,28 @@ namespace AivanHyvaPeli
             textBlock.Margin = new Thickness(5);
             stackPanel.Children.Add(textBlock);
 
+
+
             // Create the Buttons
             stackPanel.Children.Add(mainMenuButtonMaker("START GAME"));
             stackPanel.Children.Add(mainMenuButtonMaker("LOAD GAME"));
             stackPanel.Children.Add(mainMenuButtonMaker("SETTINGS"));
             stackPanel.Children.Add(mainMenuButtonMaker("HELP"));
             stackPanel.Children.Add(mainMenuButtonMaker("EXIT"));
-            
+
+            // Create about button
+
+            Button button = new Button();
+            button.Content = "About";
+            button.Height = 40;
+            button.Width = 150;
+            button.FontSize = 24;
+            button.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            button.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            button.Margin = new Thickness(20);
+            stackPanel.Children.Add(button);
+
+
             ImageBrush brush = new ImageBrush(new BitmapImage(new Uri(
              AppDomain.CurrentDomain.BaseDirectory + "/tausta.jpg")));
             stackPanel.Background = brush;
@@ -45,6 +60,8 @@ namespace AivanHyvaPeli
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
             player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "/musiikki.wav";
             player.PlayLooping();
+
+
         }
 
         public Button mainMenuButtonMaker(string buttonName)
@@ -56,7 +73,7 @@ namespace AivanHyvaPeli
             button.Width = 150;
             button.FontSize = 24;
             button.Margin = new Thickness(20);
-            switch(buttonName)
+            switch (buttonName)
             {
                 case "START GAME":
                     button.Click += startGame;
@@ -73,8 +90,12 @@ namespace AivanHyvaPeli
                 case "EXIT":
                     button.Click += exit;
                     break;
+
+
             }
             return button;
+
+
         }
 
         private void startGame(object sender, EventArgs e)
@@ -89,6 +110,7 @@ namespace AivanHyvaPeli
         {
             return;
         }
+    
         private void help(object sender, EventArgs e)
         {
             UI.Help help = new UI.Help();
@@ -97,6 +119,10 @@ namespace AivanHyvaPeli
         private void exit(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        
+        {
+
         }
+     }
     }
 }
