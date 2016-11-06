@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Reflection;
 
-namespace AivanHyvaPeli
+namespace UI
 {
     public partial class MainWindow : Window
     {
@@ -41,10 +41,6 @@ namespace AivanHyvaPeli
             ImageBrush brush = new ImageBrush(new BitmapImage(new Uri(
              AppDomain.CurrentDomain.BaseDirectory + "/tausta.jpg")));
             stackPanel.Background = brush;
-
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "/musiikki.wav";
-            player.PlayLooping();
         }
 
         public Button mainMenuButtonMaker(string buttonName)
@@ -87,7 +83,8 @@ namespace AivanHyvaPeli
         }
         private void settings(object sender, EventArgs e)
         {
-            return;
+            UI.SettingsView settings = new UI.SettingsView();
+            settings.Show();
         }
         private void help(object sender, EventArgs e)
         {
