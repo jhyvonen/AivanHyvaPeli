@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Drawing;
 using System.Windows.Media.Imaging;
+using System.Reflection;
 
-namespace XAMLVsCode
+namespace AivanHyvaPeli
 {
-    /// <summary> 
-    /// Interaction logic for MainWindow.xaml 
-    /// </summary> 
-
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +23,7 @@ namespace XAMLVsCode
             TextBlock textBlock = new TextBlock();
             textBlock.Text = "Aivan Hyvä Peli";
             textBlock.FontSize = 64;
+            textBlock.Foreground = new SolidColorBrush(Colors.White);
             textBlock.FontFamily = new System.Windows.Media.FontFamily("Verdana");
             textBlock.TextAlignment = System.Windows.TextAlignment.Center;
             textBlock.Height = 200;
@@ -61,7 +56,47 @@ namespace XAMLVsCode
             button.Width = 150;
             button.FontSize = 24;
             button.Margin = new Thickness(20);
+            switch(buttonName)
+            {
+                case "START GAME":
+                    button.Click += startGame;
+                    break;
+                case "LOAD GAME":
+                    button.Click += loadGame;
+                    break;
+                case "SETTINGS":
+                    button.Click += settings;
+                    break;
+                case "HELP":
+                    button.Click += help;
+                    break;
+                case "EXIT":
+                    button.Click += exit;
+                    break;
+            }
             return button;
+        }
+
+        private void startGame(object sender, EventArgs e)
+        {
+            return;
+        }
+        private void loadGame(object sender, EventArgs e)
+        {
+            return;
+        }
+        private void settings(object sender, EventArgs e)
+        {
+            return;
+        }
+        private void help(object sender, EventArgs e)
+        {
+            UI.Help help = new UI.Help();
+            help.Show();
+        }
+        private void exit(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
