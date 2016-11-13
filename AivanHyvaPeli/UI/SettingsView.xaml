@@ -9,12 +9,28 @@
     <StackPanel VerticalAlignment="Center" Margin="10">
         <DockPanel VerticalAlignment="Top" Margin="10">
             <Label DockPanel.Dock="Left" FontWeight="Bold">Music:</Label>
-            <CheckBox Name="checkBox" IsChecked="True" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+            <CheckBox Name="checkBox" IsChecked="{Binding Path=MyMusic}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
         </DockPanel>
         <DockPanel VerticalAlignment="Center" Margin="10">
             <Label DockPanel.Dock="Left" FontWeight="Bold">Volume:</Label>
             <TextBox Text="{Binding ElementName=currentVolume, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-            <Slider Maximum="100" TickPlacement="BottomRight" TickFrequency="1" Minimum="0" SmallChange="1" IsSnapToTickEnabled="True" Name="currentVolume" ValueChanged="VolumeSlide_ValueChanged" />
+            <Slider Maximum="100" TickPlacement="BottomRight" TickFrequency="1" Minimum="0" SmallChange="1" IsSnapToTickEnabled="True" Name="currentVolume" Value="{Binding Path=MyVolume}" ValueChanged="VolumeSlide_ValueChanged" />
         </DockPanel>
+        <Grid>
+            <Button Height="23" HorizontalAlignment="Left"  Name="button1" VerticalAlignment="Top" Width='auto' Click="button1_Click" >
+                <Button.Content>
+                    <TextBlock Text="{Binding Path=MyResolution}" />
+                </Button.Content>
+                <Button.ContextMenu>
+                    <ContextMenu >
+                        <MenuItem Header="800x600" Click="setRes_800x600"/>
+                        <MenuItem Header="1024x768" Click="setRes_1024x768"/>
+                        <MenuItem Header="1280x720" Click="setRes_1280x720"/>
+                        <MenuItem Header="1600x900" Click="setRes_1600x900"/>
+                        <MenuItem Header="1920x1080" Click="setRes_1920x1080"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+        </Grid>
     </StackPanel>
 </Window>

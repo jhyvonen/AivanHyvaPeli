@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AudioSwitcher.AudioApi, Version=3.0.0.209, Culture=neutral, PublicKeyToken=fda5729e2db3a64f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AudioSwitcher.AudioApi.3.0.0\lib\net40\AudioSwitcher.AudioApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AudioSwitcher.AudioApi.CoreAudio, Version=3.0.0.209, Culture=neutral, PublicKeyToken=fda5729e2db3a64f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AudioSwitcher.AudioApi.CoreAudio.3.0.0.1\lib\net40\AudioSwitcher.AudioApi.CoreAudio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -44,6 +52,9 @@
   <ItemGroup>
     <Compile Include="Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

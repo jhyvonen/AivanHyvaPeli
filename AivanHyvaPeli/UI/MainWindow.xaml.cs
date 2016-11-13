@@ -3,20 +3,24 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Reflection;
+using PlatformManager;
 
 namespace UI
 {
     public partial class MainWindow : Window
     {
+        StackPanel stackPanel;
         public MainWindow()
         {
+            Settings settings = new Settings();
             InitializeComponent();
+            DataContext = Settings.Instance;
             // Create the StackPanel 
-            StackPanel stackPanel = new StackPanel();
-            stackPanel.Height = 900;
-            stackPanel.Width = 1600;
+            stackPanel = new StackPanel();
+            stackPanel.Height = settings.MyHeight;
+            stackPanel.Width = settings.MyWidth;
             Content = stackPanel;
+            settings.PropertyChanged += setResolution;
             
 
             // Create the TextBlock 
@@ -83,17 +87,24 @@ namespace UI
         }
         private void settings(object sender, EventArgs e)
         {
-            UI.SettingsView settings = new UI.SettingsView();
+            SettingsView settings = new SettingsView();
             settings.Show();
         }
         private void help(object sender, EventArgs e)
         {
-            UI.Help help = new UI.Help();
+            Help help = new Help();
             help.Show();
         }
         private void exit(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void setResolution(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            stackPanel.Height = settings.MyHeight;
+            stackPanel.Width = settings.MyWidth;
         }
     }
 }

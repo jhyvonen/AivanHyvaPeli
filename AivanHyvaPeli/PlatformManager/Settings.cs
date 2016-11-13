@@ -1,22 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+using AudioSwitcher.AudioApi.CoreAudio;
+using System.ComponentModel;
 
 namespace PlatformManager
 {
-    public class Settings
+    public class Settings : INotifyPropertyChanged
     {
-        private static Settings instance;
-        private static Slider volume;
-        private static CheckBox musicOn;
-        private static System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+        private static Settings instance = new Settings();
+        private double screenWidth;
+        private double screenHeigth;
+        private bool musicOn;
+        private System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+        private CoreAudioDevice defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
 
-
-        private Settings() { }
-        private static Settings Instance
+        public Settings()
+        {
+            screenHeigth = System.Windows.SystemParameters.PrimaryScreenHeight;
+            screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            if (player.SoundLocation == "")
+                player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "/musiikki.wav";
+        }
+        public static Settings Instance
         {
             get
             {
@@ -28,18 +32,19 @@ namespace PlatformManager
             }
         }
 
-        public static Slider MyVolume
+        public double MyVolume
         {
             get
             {
-                return volume;
+                return defaultPlaybackDevice.Volume;
             }
             set
             {
-                volume = value;
+                defaultPlaybackDevice.Volume = value;
             }
         }
-        public static CheckBox MyMusic
+
+        public bool MyMusic
         {
             get
             {
@@ -47,14 +52,64 @@ namespace PlatformManager
             }
             set
             {
-                if (player.SoundLocation == "")
-                    player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "/musiikki.wav";
+                if (musicOn == value)
+                    return;
                 musicOn = value;
-                if (musicOn.IsChecked == true)
+                if (musicOn == true)
                     player.PlayLooping();
-                else if (!musicOn.IsChecked == true)
+                else if (!musicOn == true)
                     player.Stop();
+            }
+        }
 
+        public double MyWidth
+        {
+            get
+            {
+                return screenWidth;
+            }
+            set
+            {
+                if (value != screenWidth)
+                {
+                    screenWidth = value;
+                    NotifyPropertyChanged("MyWidth");
+                }
+            }
+        }
+        public double MyHeight
+        {
+            get
+            {
+                return screenHeigth;
+            }
+            set
+            {
+                if (value != screenHeigth)
+                {
+                    screenHeigth = value;
+                    NotifyPropertyChanged("MyHeight");
+                }
+            }
+        }
+
+        protected void NotifyPropertyChanged(string MyProperty)
+        {
+            NotifyPropertyChanged(new PropertyChangedEventArgs(MyProperty));
+        }
+
+        protected void NotifyPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string MyResolution
+        {
+            get
+            {
+                return "Resolution: " + screenWidth + "x" + screenHeigth;
             }
         }
     }

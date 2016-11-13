@@ -1,6 +1,6 @@
 ﻿<Window x:Class = "UI.MainWindow"
    xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" Title = "MainWindow" Height = "900" Width = "1600">
+   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" Title = "Aivan Hyvä Peli" Height = "{Binding Path=MyHeight, Mode=TwoWay}" Width = "{Binding Path=MyWidth, Mode=TwoWay}">
 
     <StackPanel>
     </StackPanel>
