@@ -74,6 +74,7 @@ namespace PlatformManager
                 {
                     screenWidth = value;
                     NotifyPropertyChanged("MyWidth");
+                    NotifyPropertyChanged("MyResolution");
                 }
             }
         }
@@ -89,6 +90,7 @@ namespace PlatformManager
                 {
                     screenHeigth = value;
                     NotifyPropertyChanged("MyHeight");
+                    NotifyPropertyChanged("MyResolution");
                 }
             }
         }
@@ -100,7 +102,7 @@ namespace PlatformManager
 
         protected void NotifyPropertyChanged(PropertyChangedEventArgs e)
         {
-            PropertyChanged?.Invoke(this, e);
+            PropertyChanged(this, e);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

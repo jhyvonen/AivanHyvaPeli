@@ -12,15 +12,14 @@ namespace UI
         StackPanel stackPanel;
         public MainWindow()
         {
-            Settings settings = new Settings();
             InitializeComponent();
             DataContext = Settings.Instance;
             // Create the StackPanel 
             stackPanel = new StackPanel();
-            stackPanel.Height = settings.MyHeight;
-            stackPanel.Width = settings.MyWidth;
+            stackPanel.Height = Settings.Instance.MyHeight;
+            stackPanel.Width = Settings.Instance.MyWidth;
             Content = stackPanel;
-            settings.PropertyChanged += setResolution;
+            Settings.Instance.PropertyChanged += setResolution;
             
 
             // Create the TextBlock 
@@ -52,10 +51,11 @@ namespace UI
             Button button = new Button();
             button.Content = buttonName;
             button.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            button.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
             button.Height = 40;
             button.Width = 150;
             button.FontSize = 24;
-            button.Margin = new Thickness(20);
+            button.Margin = new Thickness(10);
             switch(buttonName)
             {
                 case "START GAME":
@@ -102,9 +102,8 @@ namespace UI
 
         private void setResolution(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
-            stackPanel.Height = settings.MyHeight;
-            stackPanel.Width = settings.MyWidth;
+            stackPanel.Height = Settings.Instance.MyHeight;
+            stackPanel.Width = Settings.Instance.MyWidth;
         }
     }
 }
