@@ -20,7 +20,6 @@ namespace UI
             stackPanel.Width = Settings.Instance.MyWidth;
             Content = stackPanel;
             Settings.Instance.PropertyChanged += setResolution;
-            
 
             // Create the TextBlock 
             TextBlock textBlock = new TextBlock();
@@ -34,13 +33,28 @@ namespace UI
             textBlock.Margin = new Thickness(5);
             stackPanel.Children.Add(textBlock);
 
+
+
             // Create the Buttons
             stackPanel.Children.Add(mainMenuButtonMaker("START GAME"));
             stackPanel.Children.Add(mainMenuButtonMaker("LOAD GAME"));
             stackPanel.Children.Add(mainMenuButtonMaker("SETTINGS"));
             stackPanel.Children.Add(mainMenuButtonMaker("HELP"));
             stackPanel.Children.Add(mainMenuButtonMaker("EXIT"));
-            
+
+            // Create about button
+
+            Button button = new Button();
+            button.Content = "About";
+            button.Height = 40;
+            button.Width = 150;
+            button.FontSize = 24;
+            button.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            button.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            button.Margin = new Thickness(20);
+            stackPanel.Children.Add(button);
+
+
             ImageBrush brush = new ImageBrush(new BitmapImage(new Uri(
              AppDomain.CurrentDomain.BaseDirectory + "/tausta.jpg")));
             stackPanel.Background = brush;
@@ -73,8 +87,12 @@ namespace UI
                 case "EXIT":
                     button.Click += exit;
                     break;
+
+
             }
             return button;
+
+
         }
 
         private void startGame(object sender, EventArgs e)
@@ -90,6 +108,7 @@ namespace UI
             SettingsView settings = new SettingsView();
             settings.Show();
         }
+    
         private void help(object sender, EventArgs e)
         {
             Help help = new Help();
@@ -98,6 +117,9 @@ namespace UI
         private void exit(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        
+        {
+
         }
 
         private void setResolution(object sender, EventArgs e)
@@ -105,5 +127,5 @@ namespace UI
             stackPanel.Height = Settings.Instance.MyHeight;
             stackPanel.Width = Settings.Instance.MyWidth;
         }
-    }
+     }
 }

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
-        Title="Help" Height="450" Width="900">
+        Title="Help" Height="230" Width="530">
     <Grid>
-        
+
     </Grid>
 </Window>
