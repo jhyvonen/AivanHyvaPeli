@@ -49,8 +49,8 @@ namespace UI
             button.Height = 40;
             button.Width = 150;
             button.FontSize = 24;
-            button.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
-            button.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            button.VerticalAlignment = VerticalAlignment.Bottom;
+            button.HorizontalAlignment = HorizontalAlignment.Right;
             button.Margin = new Thickness(20);
             stackPanel.Children.Add(button);
 
@@ -64,8 +64,8 @@ namespace UI
         {
             Button button = new Button();
             button.Content = buttonName;
-            button.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-            button.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+            button.HorizontalAlignment = HorizontalAlignment.Left;
+            button.VerticalAlignment = VerticalAlignment.Stretch;
             button.Height = 40;
             button.Width = 150;
             button.FontSize = 24;
@@ -87,8 +87,6 @@ namespace UI
                 case "EXIT":
                     button.Click += exit;
                     break;
-
-
             }
             return button;
 
@@ -117,9 +115,6 @@ namespace UI
         private void exit(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
-        
-        {
-
         }
 
         private void setResolution(object sender, EventArgs e)

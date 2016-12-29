@@ -1,0 +1,5 @@
+*.cache
+*.lref
+*.pdb
+*.exe
+*.suo
