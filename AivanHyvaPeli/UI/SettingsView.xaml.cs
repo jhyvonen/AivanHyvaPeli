@@ -11,6 +11,10 @@ namespace UI
             InitializeComponent();
             DataContext = Settings.Instance;
         }
+        void Back(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
 
         private void VolumeSlide_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {

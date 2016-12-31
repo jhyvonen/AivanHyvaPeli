@@ -60,6 +60,7 @@
                 <TextBlock TextWrapping="Wrap" Text="Hard"/>
             </RadioButton>
         </StackPanel>
+        <Button Click="Back" Width="100" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right">Back to menu</Button>
     </StackPanel>
     
 </Window>
