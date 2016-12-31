@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 namespace UI
@@ -14,19 +13,20 @@ namespace UI
             InitializeComponent();
 
             StackPanel stackPanel = new StackPanel();
-            stackPanel.Height = 350;
+            stackPanel.Height = 280;
             stackPanel.Width = 500;
             Content = stackPanel;
 
-            TextBlock textBlock = new TextBlock();
-            textBlock.Text = "HELP";
-            textBlock.FontSize = 24;
-            textBlock.Foreground = new SolidColorBrush(Colors.Blue);
-            textBlock.FontFamily = new System.Windows.Media.FontFamily("Verdana");
-            textBlock.TextAlignment = System.Windows.TextAlignment.Center;
-            textBlock.Height = 450;
-            textBlock.Width = 100;
-            textBlock.Margin = new Thickness(5);
+            TextBlock headline = new TextBlock();
+            headline.Text = "HELP";
+            headline.FontSize = 24;
+            headline.Foreground = new SolidColorBrush(Colors.Black);
+            headline.FontFamily = new System.Windows.Media.FontFamily("Verdana");
+            headline.TextAlignment = System.Windows.TextAlignment.Center;
+            headline.Height = 30;
+            headline.Width = 100;
+            headline.Margin = new Thickness(5);
+            stackPanel.Children.Add(headline);
 
 
             TextBlock helpText = new TextBlock();
@@ -89,10 +89,8 @@ namespace UI
         {
             Close();
         }
-
-
     }
-    }
+}
 
 
 

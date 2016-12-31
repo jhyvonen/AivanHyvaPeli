@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using PlatformManager;
+using System.Windows.Controls.Primitives;
 
 namespace UI
 {
@@ -46,12 +47,13 @@ namespace UI
 
             Button button = new Button();
             button.Content = "About";
-            button.Height = 40;
+            button.Height = 35;
             button.Width = 150;
             button.FontSize = 24;
             button.VerticalAlignment = VerticalAlignment.Bottom;
             button.HorizontalAlignment = HorizontalAlignment.Right;
             button.Margin = new Thickness(20);
+            button.Click += about;
             stackPanel.Children.Add(button);
 
 
@@ -66,7 +68,7 @@ namespace UI
             button.Content = buttonName;
             button.HorizontalAlignment = HorizontalAlignment.Left;
             button.VerticalAlignment = VerticalAlignment.Stretch;
-            button.Height = 40;
+            button.Height = 35;
             button.Width = 150;
             button.FontSize = 24;
             button.Margin = new Thickness(10);
@@ -89,17 +91,47 @@ namespace UI
                     break;
             }
             return button;
-
-
         }
 
         private void startGame(object sender, EventArgs e)
         {
-            return;
+            Popup myPopup = new Popup();
+            myPopup.PlacementTarget = stackPanel;
+            myPopup.StaysOpen = false;
+            myPopup.PlacementRectangle = new Rect(150, 195, 0, 0);
+            myPopup.VerticalOffset = 20;
+            myPopup.HorizontalOffset = 20;
+            myPopup.Placement = PlacementMode.Bottom;
+            myPopup.PopupAnimation = PopupAnimation.Fade;
+            myPopup.AllowsTransparency = true;
+            TextBlock popupText = new TextBlock();
+            popupText.Foreground = new SolidColorBrush(Colors.White);
+            popupText.Text = "Start Game is not implemented.";
+            popupText.FontSize = 12;
+            popupText.Width = 75;
+            popupText.TextWrapping = TextWrapping.Wrap;
+            myPopup.Child = popupText;
+            myPopup.IsOpen = true;
         }
         private void loadGame(object sender, EventArgs e)
         {
-            return;
+            Popup myPopup = new Popup();
+            myPopup.PlacementTarget = stackPanel;
+            myPopup.StaysOpen = false;
+            myPopup.PlacementRectangle = new Rect(150, 250, 0, 0);
+            myPopup.VerticalOffset = 20;
+            myPopup.HorizontalOffset = 20;
+            myPopup.Placement = PlacementMode.Bottom;
+            myPopup.PopupAnimation = PopupAnimation.Fade;
+            myPopup.AllowsTransparency = true;
+            TextBlock popupText = new TextBlock();
+            popupText.Foreground = new SolidColorBrush(Colors.White);
+            popupText.Text = "Load Game is not implemented.";
+            popupText.FontSize = 12;
+            popupText.Width = 75;
+            popupText.TextWrapping = TextWrapping.Wrap;
+            myPopup.Child = popupText;
+            myPopup.IsOpen = true;
         }
         private void settings(object sender, EventArgs e)
         {
@@ -112,6 +144,13 @@ namespace UI
             Help help = new Help();
             help.Show();
         }
+
+        private void about(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.Show();
+        }
+
         private void exit(object sender, EventArgs e)
         {
             Application.Current.Shutdown();

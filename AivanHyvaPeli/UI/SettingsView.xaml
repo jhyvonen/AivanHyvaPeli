@@ -3,9 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:src="clr-namespace:PlatformManager;assembly=PlatformManager"
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
-        Title="Settings" Height="600" Width="600">
+        Title="Settings" Height="400" Width="600">
+    
+    <Window.Resources>
+        <ObjectDataProvider x:Key="FindCriteria" ObjectType="{x:Type src:Settings}" />
+        <src:RadioButtonCheckedConverter x:Key="RadioButtonCheckedConverter" />
+    </Window.Resources>
+        
     <StackPanel VerticalAlignment="Center" Margin="10">
         <DockPanel VerticalAlignment="Top" Margin="10">
             <Label DockPanel.Dock="Left" FontWeight="Bold">Music:</Label>
@@ -17,7 +24,8 @@
             <Slider Maximum="100" TickPlacement="BottomRight" TickFrequency="1" Minimum="0" SmallChange="1" IsSnapToTickEnabled="True" Name="currentVolume" Value="{Binding Path=MyVolume}" ValueChanged="VolumeSlide_ValueChanged" />
         </DockPanel>
         <Grid>
-            <Button Height="23" HorizontalAlignment="Left"  Name="button1" VerticalAlignment="Top" Width='auto' Click="button1_Click" >
+            <TextBlock FontWeight="Bold">Resolution:</TextBlock>
+            <Button Height="23" HorizontalAlignment="Left"  Name="ResolutionButton" VerticalAlignment="Top" Width='auto' Click="ResolutionButton_Click" Margin="70,0,0,0" >
                 <Button.Content>
                     <TextBlock Text="{Binding Path=MyResolution}" />
                 </Button.Content>
@@ -32,5 +40,26 @@
                 </Button.ContextMenu>
             </Button>
         </Grid>
+        <StackPanel Margin="0,10">
+            <TextBlock FontWeight="Bold">Difficulty:</TextBlock>
+            <RadioButton GroupName="EnumGroup" Grid.Row="1" Margin="0,5" 
+                            IsChecked="{Binding Path=DifficultyEnum, Converter={StaticResource RadioButtonCheckedConverter}, 
+                            ConverterParameter={x:Static src:Difficulty.Easy}}">
+                <TextBlock TextWrapping="Wrap" Text="Easy" />
+            </RadioButton>
+
+            <RadioButton GroupName="EnumGroup" Grid.Row="1" Margin="0,5" 
+                            IsChecked="{Binding Path=DifficultyEnum, Converter={StaticResource RadioButtonCheckedConverter}, 
+                            ConverterParameter={x:Static src:Difficulty.Medium}}">
+                <TextBlock TextWrapping="Wrap" Text="Medium"/>
+            </RadioButton>
+
+            <RadioButton GroupName="EnumGroup" Grid.Row="1" Margin="0,5" 
+                            IsChecked="{Binding Path=DifficultyEnum, Converter={StaticResource RadioButtonCheckedConverter}, 
+                            ConverterParameter={x:Static src:Difficulty.Hard}}">
+                <TextBlock TextWrapping="Wrap" Text="Hard"/>
+            </RadioButton>
+        </StackPanel>
     </StackPanel>
+    
 </Window>
